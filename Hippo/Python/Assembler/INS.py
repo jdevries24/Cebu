@@ -1,4 +1,5 @@
 import json
+"""All this file does is expand information in the INS.JSON into forms more useful to the assembler also adds register discriptons"""
 
 INS_TYPES = ['SINGLE', 'SRC', 'CAL', 'DEST_OFFSET', 'BYTE', 'DEST', 'SRC_DEST', 'JMP', 'SRC_DEST_JMP', 'SRC_DEST_OFFSET', 'SRC_DEST_IM']
 INS_OPS = {
