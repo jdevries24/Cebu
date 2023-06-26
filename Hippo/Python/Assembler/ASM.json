@@ -1,0 +1,856 @@
+{
+    "INS": {
+        "NOP": {
+            "SIZE": 2,
+            "OPCODE": "00",
+            "TYPE": "SINGLE",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE"
+            ],
+            "MEM": "NOP"
+        },
+        "RET": {
+            "SIZE": 2,
+            "OPCODE": "B0",
+            "TYPE": "SINGLE",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE"
+            ],
+            "MEM": "RET"
+        },
+        "CAR": {
+            "SIZE": 2,
+            "OPCODE": "A1",
+            "TYPE": "SRC",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG"
+            ],
+            "MEM": "CAR"
+        },
+        "CAL": {
+            "SIZE": 2,
+            "OPCODE": "A0",
+            "TYPE": "CAL",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "VALUE"
+            ],
+            "MEM": "CAL"
+        },
+        "LEA": {
+            "SIZE": 4,
+            "OPCODE": "A2",
+            "TYPE": "DEST_OFFSET",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "LEA"
+        },
+        "INT": {
+            "SIZE": 2,
+            "OPCODE": "C0",
+            "TYPE": "BYTE",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "VALUE"
+            ],
+            "MEM": "INT"
+        },
+        "RINT": {
+            "SIZE": 2,
+            "OPCODE": "C1",
+            "TYPE": "SINGLE",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE"
+            ],
+            "MEM": "RINT"
+        },
+        "POPINT": {
+            "SIZE": 2,
+            "OPCODE": "C2",
+            "TYPE": "DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG"
+            ],
+            "MEM": "POPINT"
+        },
+        "PSHINT": {
+            "SIZE": 2,
+            "OPCODE": "C3",
+            "TYPE": "SRC",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG"
+            ],
+            "MEM": "PSHINT"
+        },
+        "CSR": {
+            "SIZE": 2,
+            "OPCODE": "F0",
+            "TYPE": "SINGLE",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE"
+            ],
+            "MEM": "CSR"
+        },
+        "LDB": {
+            "SIZE": 2,
+            "OPCODE": "10",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "LDB"
+        },
+        "LDH": {
+            "SIZE": 2,
+            "OPCODE": "11",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "LDH"
+        },
+        "LDW": {
+            "SIZE": 2,
+            "OPCODE": "12",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "LDW"
+        },
+        "LSB": {
+            "SIZE": 2,
+            "OPCODE": "14",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "LSB"
+        },
+        "LSH": {
+            "SIZE": 2,
+            "OPCODE": "15",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "LSH"
+        },
+        "LSW": {
+            "SIZE": 2,
+            "OPCODE": "16",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "LSW"
+        },
+        "STB": {
+            "SIZE": 2,
+            "OPCODE": "18",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "STB"
+        },
+        "STH": {
+            "SIZE": 2,
+            "OPCODE": "19",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "STH"
+        },
+        "STW": {
+            "SIZE": 2,
+            "OPCODE": "1A",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "STW"
+        },
+        "ADD": {
+            "SIZE": 2,
+            "OPCODE": "30",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "ADD"
+        },
+        "SUB": {
+            "SIZE": 2,
+            "OPCODE": "31",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "SUB"
+        },
+        "AND": {
+            "SIZE": 2,
+            "OPCODE": "32",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "AND"
+        },
+        "ORR": {
+            "SIZE": 2,
+            "OPCODE": "33",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "ORR"
+        },
+        "XOR": {
+            "SIZE": 2,
+            "OPCODE": "34",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "XOR"
+        },
+        "NOT": {
+            "SIZE": 2,
+            "OPCODE": "35",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "NOT"
+        },
+        "NEG": {
+            "SIZE": 2,
+            "OPCODE": "36",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "NEG"
+        },
+        "LSL": {
+            "SIZE": 2,
+            "OPCODE": "37",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "LSL"
+        },
+        "LSR": {
+            "SIZE": 2,
+            "OPCODE": "38",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "LSR"
+        },
+        "MUL": {
+            "SIZE": 2,
+            "OPCODE": "39",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "MUL"
+        },
+        "SMUL": {
+            "SIZE": 2,
+            "OPCODE": "3A",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "SMUL"
+        },
+        "MOD": {
+            "SIZE": 2,
+            "OPCODE": "3B",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "MOD"
+        },
+        "SMOD": {
+            "SIZE": 2,
+            "OPCODE": "3C",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "SMOD"
+        },
+        "DIV": {
+            "SIZE": 2,
+            "OPCODE": "3D",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "DIV"
+        },
+        "SDIV": {
+            "SIZE": 2,
+            "OPCODE": "3E",
+            "TYPE": "SRC_DEST",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG"
+            ],
+            "MEM": "SDIV"
+        },
+        "JMP": {
+            "SIZE": 4,
+            "OPCODE": "50",
+            "TYPE": "JMP",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "VALUE"
+            ],
+            "MEM": "JMP"
+        },
+        "JME": {
+            "SIZE": 4,
+            "OPCODE": "51",
+            "TYPE": "SRC_DEST_JMP",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "JME"
+        },
+        "JNE": {
+            "SIZE": 4,
+            "OPCODE": "52",
+            "TYPE": "SRC_DEST_JMP",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "JNE"
+        },
+        "JLT": {
+            "SIZE": 4,
+            "OPCODE": "53",
+            "TYPE": "SRC_DEST_JMP",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "JLT"
+        },
+        "JGT": {
+            "SIZE": 4,
+            "OPCODE": "54",
+            "TYPE": "SRC_DEST_JMP",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "JGT"
+        },
+        "JSME": {
+            "SIZE": 4,
+            "OPCODE": "61",
+            "TYPE": "SRC_DEST_JMP",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "JSME"
+        },
+        "JSNE": {
+            "SIZE": 4,
+            "OPCODE": "62",
+            "TYPE": "SRC_DEST_JMP",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "JSNE"
+        },
+        "JSLT": {
+            "SIZE": 4,
+            "OPCODE": "63",
+            "TYPE": "SRC_DEST_JMP",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "JSLT"
+        },
+        "JSGT": {
+            "SIZE": 4,
+            "OPCODE": "64",
+            "TYPE": "SRC_DEST_JMP",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "JSGT"
+        },
+        "LDBI": {
+            "SIZE": 4,
+            "OPCODE": "20",
+            "TYPE": "SRC_DEST_OFFSET",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "LDBI"
+        },
+        "LDHI": {
+            "SIZE": 4,
+            "OPCODE": "21",
+            "TYPE": "SRC_DEST_OFFSET",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "LDHI"
+        },
+        "LDWI": {
+            "SIZE": 4,
+            "OPCODE": "22",
+            "TYPE": "SRC_DEST_OFFSET",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "LDWI"
+        },
+        "LSBI": {
+            "SIZE": 4,
+            "OPCODE": "24",
+            "TYPE": "SRC_DEST_OFFSET",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "LSBI"
+        },
+        "LSHI": {
+            "SIZE": 4,
+            "OPCODE": "25",
+            "TYPE": "SRC_DEST_OFFSET",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "LSHI"
+        },
+        "LSWI": {
+            "SIZE": 4,
+            "OPCODE": "26",
+            "TYPE": "SRC_DEST_OFFSET",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "LSWI"
+        },
+        "STBI": {
+            "SIZE": 4,
+            "OPCODE": "28",
+            "TYPE": "SRC_DEST_OFFSET",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "STBI"
+        },
+        "STHI": {
+            "SIZE": 4,
+            "OPCODE": "29",
+            "TYPE": "SRC_DEST_OFFSET",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "STHI"
+        },
+        "STWI": {
+            "SIZE": 4,
+            "OPCODE": "2A",
+            "TYPE": "SRC_DEST_OFFSET",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "STWI"
+        },
+        "ADDI": {
+            "SIZE": 4,
+            "OPCODE": "40",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "ADDI"
+        },
+        "SUBI": {
+            "SIZE": 4,
+            "OPCODE": "41",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "SUBI"
+        },
+        "ANDI": {
+            "SIZE": 4,
+            "OPCODE": "42",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "ANDI"
+        },
+        "ORRI": {
+            "SIZE": 4,
+            "OPCODE": "43",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "ORRI"
+        },
+        "XORI": {
+            "SIZE": 4,
+            "OPCODE": "44",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "XORI"
+        },
+        "LSLI": {
+            "SIZE": 4,
+            "OPCODE": "47",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "LSLI"
+        },
+        "LSRI": {
+            "SIZE": 4,
+            "OPCODE": "48",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "LSRI"
+        },
+        "MULI": {
+            "SIZE": 4,
+            "OPCODE": "49",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "MULI"
+        },
+        "SMULI": {
+            "SIZE": 4,
+            "OPCODE": "4A",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "SMULI"
+        },
+        "MODI": {
+            "SIZE": 4,
+            "OPCODE": "4B",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "MODI"
+        },
+        "SMODI": {
+            "SIZE": 4,
+            "OPCODE": "4C",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "SMODI"
+        },
+        "DIVI": {
+            "SIZE": 4,
+            "OPCODE": "4D",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "DIVI"
+        },
+        "SDIVI": {
+            "SIZE": 4,
+            "OPCODE": "4E",
+            "TYPE": "SRC_DEST_IM",
+            "DISC": "",
+            "OPRANDS": [
+                "OPCODE",
+                "REG",
+                "REG",
+                "VALUE"
+            ],
+            "MEM": "SDIVI"
+        }
+    },
+    "REGISTERS": {
+        "SP": 15,
+        "RA": 10,
+        "ZERO": 0,
+        "0": 0,
+        "R0": 0,
+        "1": 1,
+        "R1": 1,
+        "2": 2,
+        "R2": 2,
+        "3": 3,
+        "R3": 3,
+        "4": 4,
+        "R4": 4,
+        "5": 5,
+        "R5": 5,
+        "6": 6,
+        "R6": 6,
+        "7": 7,
+        "R7": 7,
+        "8": 8,
+        "R8": 8,
+        "9": 9,
+        "R9": 9,
+        "10": 10,
+        "R10": 10,
+        "A": 10,
+        "11": 11,
+        "R11": 11,
+        "RB": 11,
+        "B": 11,
+        "12": 12,
+        "R12": 12,
+        "RC": 12,
+        "C": 12,
+        "13": 13,
+        "R13": 13,
+        "RD": 13,
+        "D": 13,
+        "14": 14,
+        "R14": 14,
+        "RE": 14,
+        "E": 14,
+        "15": 15,
+        "R15": 15,
+        "RF": 15,
+        "F": 15
+    },
+    "MEMORY_SIZES": {
+        "B": 1,
+        "BYTE": 1,
+        "H": 2,
+        "HALF": 2,
+        "W": 4,
+        "WORD": 4
+    }
+}
