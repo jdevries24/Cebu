@@ -69,7 +69,7 @@ class FirstPass:
         """Adds a var to the var Table"""
         nextToken = self.dequeu()
         if (nextToken.type in ["EOF","nl"]):
-            raise ASSEMBLYERROR("Undefined Varible",Token.line)
+            return
         self.VAR_TABLE.update({Token.text:nextToken})
         if (self.TokenQueu[-1].type not in ["EOF","nl"]):
             raise ASSEMBLYERROR("Double diffened Var",Token.line)
