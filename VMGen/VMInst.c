@@ -484,7 +484,7 @@ void RET(JRISC_ps_t *ps){
 	ps->Pc = ps->Registers[0xf];
 }
 
-void INT(JRISC_ps_t *ps){
+void INT_INS(JRISC_ps_t *ps){
 	uint8_t int_number = ps->Ram[ps->Pc + 1];
 	//Todo: add Logic
 	ps->Pc += 2;
@@ -705,7 +705,7 @@ void (*JRISC_instructions[])(JRISC_ps_t*) = {
 	NOP,
 	NOP,
 	NOP,
-	INT,
+	INT_INS,
 	RINT,
 	POPIRA,
 	PSHIRA,
