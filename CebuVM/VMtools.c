@@ -64,7 +64,7 @@ inline void u32store(u32 value,u8 *ram,u32 loc){
 
 inline s32 u32tos32(u32 value){
     union{u32 uvalue;
-    s32 svalue} c;
+    s32 svalue;} c;
     c.uvalue = value;
     return c.svalue;
 }
