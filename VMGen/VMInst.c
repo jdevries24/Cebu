@@ -50,75 +50,96 @@ void LDWS(JRISC_ps_t *ps){
 
 void STB(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Ram[Src_val] = (uint8_t)Dest_val & 0xff;
 	ps->Pc += 2;
 }
 
 void STH(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Ram[Src_val] =(uint8_t) (Dest_val >> 8) & 0xff;
+	ps->Ram[Src_val + 1] = (uint8_t) (Dest_val) & 0xff;
 	ps->Pc += 2;
 }
 
 void STW(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Ram[Src_val] = (uint8_t)(Dest_val >> 24) & 0xff;
+	ps->Ram[Src_val + 1] = (uint8_t)(Dest_val >> 16) & 0xff;
+	ps->Ram[Src_val + 2] = (uint8_t)(Dest_val >> 8) & 0xff;
+	ps->Ram[Src_val + 3] = (uint8_t)(Dest_val & 0xff);
 	ps->Pc += 2;
 }
 
 void LDBI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	uint32_t addr = Add_signed_16(Src_val,imm);
+	ps->Registers[Dest_num] = (uint32_t) ps->Ram[addr];
 	ps->Pc += 4;
 }
 
 void LDHI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	uint32_t addr = Add_signed_16(Src_val,imm);
+	ps->Registers[Dest_num] = Load_half(addr,ps->Ram);
 	ps->Pc += 4;
 }
 
 void LDWI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	uint32_t addr = Add_signed_16(Src_val,imm);
+	ps->Registers[Dest_num] = Load_word(addr,ps->Ram);
 	ps->Pc += 4;
 }
 
 void LDBSI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	uint32_t addr = Add_signed_16(Src_val,imm);
+	uint32_t value = (uint32_t) ps->Ram[addr];
+	if(value & 0x80){
+		value |= 0xffffff00;
+	}
+	ps->Registers[Dest_num] = value;
 	ps->Pc += 4;
 }
 
 void LDHSI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	uint32_t addr = Add_signed_16(Src_val,imm);
+	uint32_t value = Load_half(addr,ps->Ram);
+	if(value & 0x8000){
+		value |= 0xffff0000;
+	}
+	ps->Registers[Dest_num] = value;
 	ps->Pc += 4;
 }
 
 void LDWSI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	uint32_t addr = Add_signed_16(Src_val,imm);
+	ps->Registers[Dest_num] = Load_word(addr,ps->Ram);
 	ps->Pc += 4;
 }
 
 void STBI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	uint32_t addr = Add_signed_16(Src_val,imm);
+	ps->Ram[addr] = (uint8_t)Dest_val & 0xff;
 	ps->Pc += 4;
 }
 
 void STHI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	uint32_t addr = Add_signed_16(Src_val,imm);
+	ps->Ram[addr] = (uint8_t)(Dest_val >> 8) & 0xff;
+	ps->Ram[addr + 1] = (uint8_t) Dest_val & 0xff;
 	ps->Pc += 4;
 }
 
