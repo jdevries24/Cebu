@@ -451,7 +451,7 @@ void JSGT(JRISC_ps_t *ps){
 void LEA(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_word(ps->Pc,ps->Ram) & 0xfffff;
-	ps->Registers[Dest_num] = Add_signed_24(ps->Pc,imm);
+	ps->Registers[Dest_num] = Add_signed_20(ps->Pc,imm);
 	ps->Pc += 4;
 }
 
@@ -470,19 +470,18 @@ void ADDPC(JRISC_ps_t *ps){
 
 void CAL(JRISC_ps_t *ps){
 	uint32_t imm = Load_word(ps->Pc,ps->Ram) & 0xffffff;
-	//Todo: add Logic
-	ps->Pc += 4;
+	ps->Registers[0xf] = ps->Pc + 4;
+	ps->Pc = Add_signed_24(ps->Pc,imm);
 }
 
 void CAR(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
-	ps->Pc += 2;
+	ps->Registers[0xf] = ps->Pc + 2;
+	ps->Pc = Dest_val;
 }
 
 void RET(JRISC_ps_t *ps){
-	//Todo: add Logic
-	ps->Pc += 2;
+	ps->Pc = ps->Registers[0xf];
 }
 
 void INT(JRISC_ps_t *ps){
