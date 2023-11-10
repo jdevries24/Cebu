@@ -146,7 +146,11 @@ void STHI(JRISC_ps_t *ps){
 void STWI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	uint32_t addr = Add_signed_16(Src_val,imm);
+	ps->Ram[addr] = (uint8_t)(Dest_val >> 24) & 0xff;
+	ps->Ram[addr + 1] = (uint8_t)(Dest_val >> 16) & 0xff;
+	ps->Ram[addr + 2] = (uint8_t)(Dest_val >> 8) & 0xff;
+	ps->Ram[addr + 3] = (uint8_t)(Dest_val & 0xff);
 	ps->Pc += 4;
 }
 
