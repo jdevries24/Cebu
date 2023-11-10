@@ -395,6 +395,18 @@
             ],
             "MEM": "SDIV"
         },
+	"MOV":{
+		"SIZE":2,
+		"OPCODE":"4F",
+		"TYPE":"SRC_DEST",
+		"DISC":"",
+		"OPRANDS":[
+			"OPCODE",
+			"REG",
+			"REG"
+		],
+		"MEM":"MOV"
+	},
         "JMP": {
             "SIZE": 4,
             "OPCODE": "50",
