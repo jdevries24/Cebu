@@ -156,201 +156,212 @@ void STWI(JRISC_ps_t *ps){
 
 void ADD(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Dest_val + Src_val;
 	ps->Pc += 2;
 }
 
 void SUB(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Dest_val - Src_val;
 	ps->Pc += 2;
 }
 
 void AND(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Dest_val & Src_val;
 	ps->Pc += 2;
 }
 
 void ORR(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Dest_val | Src_val;
 	ps->Pc += 2;
 }
 
 void XOR(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Dest_val ^ Src_val;
 	ps->Pc += 2;
 }
 
 void NOT(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = !Src_val;
 	ps->Pc += 2;
 }
 
 void NEG(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = (uint32_t)((int32_t)Src_val * -1);
 	ps->Pc += 2;
 }
 
 void LSL(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Dest_val << Src_val;
 	ps->Pc += 2;
 }
 
 void LSR(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Dest_val >> Src_val;
 	ps->Pc += 2;
 }
 
 void MUL(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Dest_val & Src_val;
 	ps->Pc += 2;
 }
 
 void SMUL(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = (uint32_t)((int32_t)Dest_val * (int32_t)Src_val);
 	ps->Pc += 2;
 }
 
 void MOD(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Dest_val % Src_val;
 	ps->Pc += 2;
 }
 
 void SMOD(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] =(uint32_t)((int32_t) Dest_val % (int32_t)Src_val);
 	ps->Pc += 2;
 }
 
 void DIV(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Dest_val / Src_val;
 	ps->Pc += 2;
 }
 
 void SDIV(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = (uint32_t)((int32_t)Dest_val / (int32_t)Src_val);
 	ps->Pc += 2;
 }
 
 void MOV(JRISC_ps_t *ps){
-	//Todo: add Logic
-	ps->Pc += 4;
+	LoadSrcDest()
+	ps->Registers[Dest_num] = Src_val;
+	ps->Pc += 2;
 }
 
 void ADDI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Src_val + imm;
 	ps->Pc += 4;
 }
 
 void SUBI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Src_val - imm;
 	ps->Pc += 4;
 }
 
 void ANDI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Src_val & imm;
 	ps->Pc += 4;
 }
 
 void ORRI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Src_val | imm;
 	ps->Pc += 4;
 }
 
 void XORI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Src_val ^ imm;
 	ps->Pc += 4;
 }
 
 void ASLI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	uint32_t bit = Src_val & 0x1;
+	for(uint32_t i = 0;i < (imm && 0xff);i += 1){
+		Src_val <<= 1;
+		Src_val |= bit;
+	}
+	ps->Registers[Dest_num] = Src_val;
 	ps->Pc += 4;
 }
 
 void ASRI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	uint32_t bit = Src_val = 0x80000000;
+	for(uint32_t i = 0;i < (imm && 0x3f);i += 1){
+		Src_val >>= 1;
+		Src_val |= bit;
+	}
+	ps->Registers[Dest_num] = Src_val;
 	ps->Pc += 4;
 }
 
 void LSLI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Src_val << imm;
 	ps->Pc += 4;
 }
 
 void LSRI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Src_val >> imm;
 	ps->Pc += 4;
 }
 
 void MULI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Src_val * imm;
 	ps->Pc += 4;
 }
 
 void SMULI(JRISC_ps_t *ps){
 	LoadSrcDest()
-	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	int32_t imm = (int32_t)Load_half(ps->Pc + 2,ps->Ram);
+	ps->Registers[Dest_num] =(uint32_t)((int32_t) Src_val * imm);
 	ps->Pc += 4;
 }
 
 void MODI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Src_val % imm;
 	ps->Pc += 4;
 }
 
 void SMODI(JRISC_ps_t *ps){
 	LoadSrcDest()
-	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	int32_t imm = Load_half(ps->Pc + 2,ps->Ram);
+	ps->Registers[Dest_num] = Src_val % imm;
 	ps->Pc += 4;
 }
 
 void DIVI(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Src_val / imm;
 	ps->Pc += 4;
 }
 
 void SDIVI(JRISC_ps_t *ps){
 	LoadSrcDest()
-	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	int32_t imm = (int32_t)Load_half(ps->Pc + 2,ps->Ram);
+	ps->Registers[Dest_num] = ((int32_t)Src_val) / imm;
 	ps->Pc += 4;
 }
 
