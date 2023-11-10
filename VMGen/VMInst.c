@@ -451,20 +451,20 @@ void JSGT(JRISC_ps_t *ps){
 void LEA(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_word(ps->Pc,ps->Ram) & 0xfffff;
-	//Todo: add Logic
+	ps->Registers[Dest_num] = Add_signed_24(ps->Pc,imm);
 	ps->Pc += 4;
 }
 
 void MOVU(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	ps->Registers[Dest_num] = imm << 16;
 	ps->Pc += 4;
 }
 
 void ADDPC(JRISC_ps_t *ps){
 	LoadSrcDest()
-	//Todo: add Logic
+	ps->Registers[Dest_num] = ps->Pc + Src_val;
 	ps->Pc += 2;
 }
 
