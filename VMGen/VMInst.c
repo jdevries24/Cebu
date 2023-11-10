@@ -367,63 +367,84 @@ void SDIVI(JRISC_ps_t *ps){
 
 void JMP(JRISC_ps_t *ps){
 	uint32_t imm = Load_word(ps->Pc,ps->Ram) & 0xffffff;
-	//Todo: add Logic
-	ps->Pc += 4;
+	ps->Pc = Add_signed_20(ps->Pc,imm);
 }
 
 void JEQ(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
-	ps->Pc += 4;
+	if(Src_val == Dest_val){
+		ps->Pc = Add_signed_16(ps->Pc,imm);
+	}
+	else{
+		ps->Pc += 4;
+	}
 }
 
 void JNE(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	if(Src_val != Dest_val){
+		ps->Pc = Add_signed_16(ps->Pc,imm);
+	}
+	else{
+		ps->Pc += 4;
+	}
 	ps->Pc += 4;
 }
 
 void JLT(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	if(Src_val < Dest_val){
+		ps->Pc = Add_signed_16(ps->Pc,imm);
+	}
+	else{
+		ps->Pc += 4;
+	}
 	ps->Pc += 4;
 }
 
 void JGT(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	if(Src_val > Dest_val){
+		ps->Pc = Add_signed_16(ps->Pc,imm);
+	}
+	else{
+		ps->Pc += 4;
+	}
 	ps->Pc += 4;
 }
 
 void JSEQ(JRISC_ps_t *ps){
-	LoadSrcDest()
-	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
-	ps->Pc += 4;
+	JEQ(ps);
 }
 
 void JSNE(JRISC_ps_t *ps){
-	LoadSrcDest()
-	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
-	ps->Pc += 4;
+	JNE(ps);
 }
 
 void JSLT(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
-	ps->Pc += 4;
+	if(((int32_t)Src_val)  < ((int32_t)Dest_val)){
+		ps->Pc = Add_signed_16(ps->Pc,imm);
+	}
+	else{
+		ps->Pc += 4;
+	}
 }
 
 void JSGT(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	//Todo: add Logic
+	if(((int32_t)Src_val)  > ((int32_t)Dest_val)){
+		ps->Pc = Add_signed_16(ps->Pc,imm);
+	}
+	else{
+		ps->Pc += 4;
+	}
 	ps->Pc += 4;
 }
 
