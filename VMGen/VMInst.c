@@ -1,5 +1,7 @@
 #include "VMachine.h"
 #include "VMMacros.c"
+#include <stdint.h>
+
 void NOP(JRISC_ps_t *ps){
 	ps->Pc += 2;
 }
@@ -366,8 +368,8 @@ void SDIVI(JRISC_ps_t *ps){
 }
 
 void JMP(JRISC_ps_t *ps){
-	uint32_t imm = Load_word(ps->Pc,ps->Ram) & 0xffffff;
-	ps->Pc = Add_signed_20(ps->Pc,imm);
+	uint32_t imm = Load_word(ps->Pc,ps->Ram) & 0xffff;
+	ps->Pc = Add_signed_16(ps->Pc,imm);
 }
 
 void JEQ(JRISC_ps_t *ps){
@@ -390,31 +392,28 @@ void JNE(JRISC_ps_t *ps){
 	else{
 		ps->Pc += 4;
 	}
-	ps->Pc += 4;
 }
 
 void JLT(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	if(Src_val < Dest_val){
+	if(Dest_val < Src_val){
 		ps->Pc = Add_signed_16(ps->Pc,imm);
 	}
 	else{
 		ps->Pc += 4;
 	}
-	ps->Pc += 4;
 }
 
 void JGT(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	if(Src_val > Dest_val){
+	if(Dest_val > Src_val){
 		ps->Pc = Add_signed_16(ps->Pc,imm);
 	}
 	else{
 		ps->Pc += 4;
 	}
-	ps->Pc += 4;
 }
 
 void JSEQ(JRISC_ps_t *ps){
@@ -428,7 +427,7 @@ void JSNE(JRISC_ps_t *ps){
 void JSLT(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	if(((int32_t)Src_val)  < ((int32_t)Dest_val)){
+	if(((int32_t)Dest_val)  < ((int32_t)Src_val)){
 		ps->Pc = Add_signed_16(ps->Pc,imm);
 	}
 	else{
@@ -439,19 +438,18 @@ void JSLT(JRISC_ps_t *ps){
 void JSGT(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
-	if(((int32_t)Src_val)  > ((int32_t)Dest_val)){
+	if(((int32_t)Dest_val)  > ((int32_t)Src_val)){
 		ps->Pc = Add_signed_16(ps->Pc,imm);
 	}
 	else{
 		ps->Pc += 4;
 	}
-	ps->Pc += 4;
 }
 
 void LEA(JRISC_ps_t *ps){
 	LoadSrcDest()
-	uint32_t imm = Load_word(ps->Pc,ps->Ram) & 0xfffff;
-	ps->Registers[Dest_num] = Add_signed_20(ps->Pc,imm);
+	uint32_t imm = Load_word(ps->Pc,ps->Ram) & 0xffff;
+	ps->Registers[Src_num] = Add_signed_16(ps->Pc,imm);
 	ps->Pc += 4;
 }
 
@@ -486,7 +484,7 @@ void RET(JRISC_ps_t *ps){
 
 void INT_INS(JRISC_ps_t *ps){
 	uint8_t int_number = ps->Ram[ps->Pc + 1];
-	//Todo: add Logic
+	ps->Inturupt = int_number;
 	ps->Pc += 2;
 }
 
@@ -512,7 +510,7 @@ void CSR(JRISC_ps_t *ps){
 	ps->Pc += 4;
 }
 
-void (*JRISC_instructions[])(JRISC_ps_t*) = {
+void (*JRISC_instructions[256])(JRISC_ps_t*) = {
 	NOP,
 	NOP,
 	NOP,
