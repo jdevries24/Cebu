@@ -1,3 +1,5 @@
+#ifndef VMachine_H_DEF
+#define VMachine_H_DEF
 #include <stdint.h>
 typedef struct{
 	uint32_t address;
@@ -13,3 +15,4 @@ typedef struct{
 	uint8_t Inturupt;
 	Inturupt_RA_t INT_RAs[5];
 }JRISC_ps_t;
+#endif
