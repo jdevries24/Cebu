@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -g
-OBJECTS =  VMInst.o CebuVM.o
+OBJECTS =  VMInst.o CebuIO.o CebuVM.o 
 LDFlags = -g
 
 make:$(OBJECTS)
@@ -14,6 +14,10 @@ VMInst.o:VMInst.c
 
 VMMacros.o:VMMacros.c
 	$(CC) $(CFLAGS) -c VMMacros.c -o $@
+
+CebuIO.o:CebuIO.c
+	$(CC) $(CFLAGS) -c CebuIO.c -o $@
+
 clean:
 	-rm -f *.o
 
