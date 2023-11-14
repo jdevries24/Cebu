@@ -32,7 +32,7 @@
             "MEM": "CAR"
         },
         "CAL": {
-            "SIZE": 2,
+            "SIZE": 4,
             "OPCODE": "A0",
             "TYPE": "CAL",
             "DISC": "",
@@ -44,7 +44,7 @@
         },
         "LEA": {
             "SIZE": 4,
-            "OPCODE": "A2",
+            "OPCODE": "71",
             "TYPE": "DEST_OFFSET",
             "DISC": "",
             "OPRANDS": [
@@ -397,7 +397,7 @@
         },
 	"MOV":{
 		"SIZE":2,
-		"OPCODE":"4F",
+		"OPCODE":"3F",
 		"TYPE":"SRC_DEST",
 		"DISC":"",
 		"OPRANDS":[
@@ -810,8 +810,8 @@
         }
     },
     "REGISTERS": {
-        "SP": 15,
-        "RA": 10,
+        "SP": 14,
+        "RA": 15,
         "ZERO": 0,
         "0": 0,
         "R0": 0,
