@@ -116,7 +116,7 @@ class secound_pass:
         """Basicly just Load Effective address"""
         opcode = int(I.INS["OPCODE"],16)
         offset = self.readValue(I.Oprands[1],I.LOC)
-        if abs(offset) > 0x8000:
+        if abs(offset) > 0x80000:
             raise ASSEMBLYERROR("OFFSET to large",I.line)
         I.Value = [opcode,I.Oprands[0]] + TOOLS.S16_to_bytes(offset)
 
@@ -147,9 +147,9 @@ class secound_pass:
         """Raw JMP instruction"""
         opcode = int(I.INS["OPCODE"],16)
         offset = self.readValue(I.Oprands[0],I.LOC)
-        if abs(offset) > 0x8000:
+        if abs(offset) > 0x800000:
             raise ASSEMBLYERROR("OFFSET too large",I.line)
-        I.Value = [opcode,0] + TOOLS.S16_to_bytes(offset)
+        I.Value = [opcode] + TOOLS.S24_to_bytes(offset)
 
     def SRC_DEST_IM(self,I):
         """A source and DEST register and Immediate value"""
