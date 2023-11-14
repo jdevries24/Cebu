@@ -1,0 +1,419 @@
+NO op
+MEM: NOP
+OPCODE: 00
+Format: NOP
+Does nothing
+
+Load Byte
+MEM: LDB
+OPCODE: 10
+Format: LDB $DEST,$SRC
+Loads a byte(8 bits,1 byte) from the address in SRC register to the dest register
+
+Load Half
+MEM: LDH
+OPCODE: 11
+Format: LDH $DEST,$SRC
+Loads a Half(16 bits,2 bytes) from the address in SRC register to the dest register
+
+Load Word
+MEM: LDW
+OPCODE: 12
+Format: LDW $DEST,$SRC
+Loads a Word(32 bits,14byte) from the address in SRC register to the dest register
+
+Load Byte Signed
+MEM: LDBS
+OPCODE: 14
+Format: LDB $DEST,$SRC
+Loads a byte(8 bits,1 byte) from the address in SRC register to the dest register extends the sign bit from the byte
+
+Load Half Signed
+MEM: LDHS
+OPCODE: 15
+Format: LDB $DEST,$SRC
+Loads a Half(16 bits,2 byte) from the address in SRC register to the dest register extends the sign bit from the Half
+
+Load Word Signed
+MEM: LDWS
+OPCODE: 16
+Format: LDB $DEST,$SRC
+Loads a Half(32 bits,4 byte) from the address in SRC register to the dest register.
+
+Store Byte
+MEM: STB
+OPCODE: 18
+Format: STB $SRC,$DEST
+Stores the first 8 bits of register SRC to the address in register DEST
+
+Store Half
+MEM: STH
+OPCODE: 19
+Format: STH $SRC,$DEST
+Stores the first 16 bits of register SRC to the address in register DEST
+
+Store Word
+MEM: STW
+OPCODE: 1A
+Format: STB $SRC,$DEST
+Stores the first 8 bits of register SRC to the address in register DEST
+
+Load Byte Immediate
+MEM: LDBI
+OPCODE: 20
+Format: LDB $DEST,$SRC,#Imm
+Loads a byte(8 bits,1 byte) from the address in SRC register(offsetted by Imm) to the dest register 
+
+Load Half Immediate
+MEM: LDHI
+OPCODE: 21
+Format: LDH $DEST,$SRC,#Imm
+Loads a Half(16 bits,2 bytes) from the address in SRC register(offsetted by Imm) to the dest register
+
+Load Word Immediate
+MEM: LDWI
+OPCODE: 22
+Format: LDW $DEST,$SRC,#Imm
+Loads a Word(32 bits,4byte) from the address in SRC register(offsetted by Imm) to the dest register
+
+Load Byte Signed Immediate
+MEM: LDBSI
+OPCODE: 24
+Format: LDB $DEST,$SRC,#Imm
+Loads a byte(8 bits,1 byte) from the address in SRC register(offsetted by Imm) to the dest register extends the sign bit from the byte
+
+Load Half Signed Immediate
+MEM: LDHSI
+OPCODE: 25
+Format: LDB $DEST,$SRC,#Imm
+Loads a Half(16 bits,2 byte) from the address in SRC register(offsetted by Imm) to the dest register extends the sign bit from the Half
+
+Load Word Signed Immediate
+MEM: LDWSI
+OPCODE: 26
+Format: LDB $DEST,$SRC,#Imm
+Loads a Half(32 bits,4 byte) from the address in SRC register(offsetted by Imm) to the dest register
+
+Store Byte Immediate
+MEM: STBI
+OPCODE: 28
+Format: STB $SRC,$DEST,#Imm
+Stores the first 8 bits of register SRC to the address in register DEST(offsetted by Imm)
+
+Store Half Immediate
+MEM: STHI
+OPCODE: 29
+Format: STH $SRC,$DEST,#Imm
+Stores the first 16 bits of register SRC to the address in register DEST(offsetted by Imm)
+
+Store Word Immediate
+MEM: STWI
+OPCODE: 2A
+Format: STB $SRC,$DEST,#Imm
+Stores the first 8 bits of register SRC to the address in register DEST(offsetted by Imm)
+
+Add
+MEM: ADD
+OPCODE: 30
+Format: ADD $DEST,$SRC
+Adds the value in SRC to the value in DEST then stores in DEST
+
+Subtract
+MEM: SUB
+OPCODE: 31
+Format: SUB $DEST,$SRC
+Subtracts the value in SRC from the value in DEST then stores in DEST
+
+And
+MEM: AND
+OPCODE: 32
+Format: AND $DEST,$SRC
+bytewise And the values in SRC and DEST then stores in DEST
+
+Or
+MEM: ORR
+OPCODE: 33
+Format: ORR $DEST,$SRC
+bytewise or the values in SRC and DEST then stores in DEST
+
+exclusive or
+MEM: XOR
+OPCODE: 34
+Format: XOR $DEST,$SRC
+bytewise exclusive ors the values in SRC and DEST then stores in DEST
+
+not
+MEM: NOT
+OPCODE: 35
+Format: NOT $DEST,$SRC
+bytewise NOTS the value in SRC then stores to DEST
+
+Negate
+MEM: NEG
+OPCODE: 36
+Format: NEG $DEST,$SRC
+two complement negate the value in SRC then store in dest
+
+Logical shift left
+MEM: LSL
+OPCODE: 37
+Format: LSL $DEST,$SRC
+Shifts the value in DEST left by the value in $SRC then stores to DEST
+
+Logical shift right
+MEM: LSR
+OPCODE: 38
+Format: LSL $DEST,$SRC
+Shifts the value in DEST right by the value in $SRC then stores to DEST
+
+Multiply
+MEM: MUL
+OPCODE: 39
+Format: MUL $DEST,$SRC
+Multiplyes the values in DEST and SRC then stores to DEST
+
+Signed Multiply
+MEM: SMUL
+OPCODE: 3A
+Format: SMUL $DEST,$SRC
+Multiplies in twos complement the values in SRC and DEST then stores in DEST
+
+Mod
+MEM: MOD
+OPCODE: 3B
+Format: MOD $DEST,$SRC
+Finds the remainder of dividing the value in DEST by the value in SRC. then stores the remainder in SRC
+
+Signed MOD
+MEM: SMOD
+OPCODE: 3C
+Format: SMOD $DEST,$SRC
+Finds the remainder of dividing the value in DEST by the value in SRC(Using twos complement) then stores the remainder in SRC
+
+Divide
+MEM: DIV
+OPCODE: 3D
+Format: DIV $DEST,$SRC
+Divides the value in DEST by the value in SRC then stores in DEST
+
+Sigened Divide
+MEM: SDIV
+OPCODE: 3E
+Format: DIV $DEST,$SRC
+Divides the value in DEST by the value in SRC(using twos complement) then stores in DEST
+
+Move
+MEM: MOV
+OPCODE: 3F
+Format: MOV $DEST,$SRC
+Copys the value in SRC to DEST
+
+Add immediate
+MEM: ADDI
+OPCODE: 40
+Format: ADDI $DEST,$SRC,#IMM
+Add IMM to the value in SRC then stores in DEST
+
+Subtract immediate
+MEM: SUBI
+OPCODE: 41
+Format: SUBI $DEST,SRC,#IMM
+Subtract IMM from SRC then store in DEST
+
+AND Immediate
+MEM: ANDI
+OPCODE: 42
+Format: ANDI $DEST,SRC,#IMM
+Bytewise and the value in SRC and IMM then store in DEST
+
+OR Immediate
+MEM: ORRI
+OPCODE: 43
+Format: ORRI $DEST,SRC,#IMM
+Bytewise or the value in SRC and IMM then store in DEST
+
+XOR Immediate
+MEM: XORI
+OPCODE: 44
+Format: ORRI $DEST,SRC,#IMM
+Bytewise exclusive or the value in SRC and IMM then store in DEST
+
+Arithmitic shift left immediate
+MEM: ASLI
+OPCODE: 45
+Format: ASLI $DEST,$SRC,#IMM
+Arithmitic shift left the value in SRC by immediate then store in DEST
+
+Arithmitic shift right immediate
+MEM: ASRI
+OPCODE: 46
+Format: ASRI $DEST,$SRC,#IMM
+Arithmitic shift right the value in SRC by immediate then store in DEST
+
+Logical shift left immediate
+MEM: LSLI
+OPCODE: 47
+Format: LSLI $DEST,$SRC,#IMM
+logic shift left the value in SRC by immediate then store in DEST
+
+Logical shift right immediate
+MEM: LSRI
+OPCODE: 48
+Format: LSRI $DEST,$SRC,#IMM
+logit shift right the value in SRC by immediate then store in DEST
+
+Multiply immediate
+MEM: MULI
+OPCODE: 49
+Format: MULI $DEST,$SRC,#IMM
+Multiply the value in SRC by IMM then store in DEST
+
+Signed Multiply immediate
+MEM: SMULI
+OPCODE: 4A
+Format: MULI $DEST,$SRC,#IMM
+Multiply the value in SRC(in twos complement) by IMM then store in DEST
+
+Module Immediate
+MEM: MODI
+OPCODE: 4B
+Format: MODI $DEST,$SRC,#IMM
+Take the remander of the value in SRC divided by IMM then store in DEST
+
+Signed Module Immediate
+MEM: SMODI
+OPCODE: 4C
+Format: SMODI $DEST,$SRC,#IMM
+Take the remander of the value in SRC(in twos complement) divided by IMM then store in DEST
+
+Divide Immediate
+MEM: DIVI
+OPCODE: 4D
+Format: DIVI $DEST,$SRC,#IMM
+Take the value in SRC divided by IMM then store in DEST
+
+Signed Divide Immediate
+MEM: SDIVI
+OPCODE: 4E
+Format: SMODI $DEST,$SRC,#IMM
+Take the value in SRC(in twos complement) divided by IMM then store in DEST
+
+Jump
+MEM: JMP
+OPCODE: 50
+Format: JMP #OFFSET
+jumps the program by the offset
+
+Jump If equal
+MEM: JEQ
+OPCODE: 51
+Format: JEQ $S1,$S2,#OFFSET
+jumps the program by the offset IF the values in S1 and S2 are equal
+
+Jump If not equal
+MEM: JNE
+OPCODE: 52
+Format: JNE $S1,$S2,#OFFSET
+jumps the program by the offset IF the values in S1 and S2 are not equal
+
+Jump If less than
+MEM: JLT
+OPCODE: 53
+Format: JLT $S1,$S2,#OFFSET
+jumps the program by the offset IF the values in S1 is less than the value in S2
+
+Jump If greater then
+MEM: JGT
+OPCODE: 54
+Format: JGT $S1,$S2,#OFFSET
+jumps the program by the ofset IF the values in S1 is larger then the value in S2
+
+Jump If signed equal
+MEM: JSEQ
+OPCODE: 61
+Format: JSEQ $S1,$S2,#OFFSET
+jumps the program by the offset IF the values in S1 and S2 are equal
+
+Jump If Signed not equal
+MEM: JSNE
+OPCODE: 62
+Format: JSNE $S1,$S2,#OFFSET
+jumps the program by the offset IF the values in S1 and S2 are not equal
+
+Jump If signed less than
+MEM: JSLT
+OPCODE: 63
+Format: JSLT $S1,$S2,#OFFSET
+jumps the program by the offset IF the values in S1 is less than the value in S2 in twos complemnt
+
+Jump If signed greater then
+MEM: JSGT
+OPCODE: 64
+Format: JSGT $S1,$S2,#OFFSET
+jumps the program by the ofset IF the values in S1 is larger then the value in S2 in twos complement
+
+Load Effective Address
+MEM: LEA
+OPCODE: 71
+Format: LEA $DEST,#OFFSET
+Add the Offset to the PC then stores that value into register DEST
+
+Move Upper
+MEM: MOVU
+OPCODE: 72
+Format: MOVU $DEST,#Imm
+Shifts the Imm left by 16 bits then stores to DEST
+
+Add PC
+MEM: ADDPC
+OPCODE: 73
+Format: ADDPC $DEST,$SRC
+adds the value SRC to the current PC then stores in DEST
+
+Call
+MEM: CAL
+OPCODE: A0
+Format: CALL #Offset
+Stores the address to the next insturction to Register RA. then adds the offset to the PC
+
+Call Register
+MEM: CAR
+OPCODE: A1
+Format: CAR $SRC
+Stores the address to the next instruction into the register RA. then sets the PC to the value in SRC
+
+Return
+MEM: RET
+OPCODE: B0
+Format: RET
+Sets the PC to the value in regester RA
+
+Inturupt
+MEM: INT
+OPCODE: C0
+Format: INT #Number
+generates an inturupt of number
+
+Return From Inturupt
+MEM: RINT
+OPCODE: C1
+Format: RINT
+Come back to this one
+
+Pop inturupt return address
+MEM: POPIRA
+OPCODE: C2
+Format: POP $DEST
+Come back to this one
+
+Push inturupt return address
+MEM: PSHIRA
+OPCODE: C3
+Format: PSHIRA $SRC
+Come back to this one
+
+Call Service Routine
+MEM: CSR
+OPCODE: F0
+Format: CSR #SeviceRoutine
+Come back to this one
