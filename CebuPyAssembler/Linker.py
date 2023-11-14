@@ -29,7 +29,7 @@ class AssemblyOutput:
         with open(FileName,'wb') as HEX:
             for l in self.Lines:
                 for b in l.Value:
-                    HEX.write(b.to_bytes())
+                    HEX.write(b.to_bytes(1,'big'))
 
     def output_link(self,FileName):
         with open(FileName,'w') as JFILE:
@@ -74,7 +74,7 @@ class linker:
             for i in range(4):
                 self.code[i] = JMP[i]
             for b in self.code:
-                HEXFILE.write(b.to_bytes())
+                HEXFILE.write(b.to_bytes(1,'big'))
 
     def addValue(self,value):
         val = 0
