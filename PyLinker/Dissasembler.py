@@ -48,10 +48,11 @@ class Dissasembler:
         return I_Str
     
     def _get_offset(self,imm):
-        if imm == 0:return "0"
         loc = self.pc + imm
         if loc in self.st.keys():
-            return self.st[loc]
+            return self._output_sym(self.st[loc])
+        if self.pc in self.rc.keys():
+            return self._output_sym(self.rc[self.pc])
         return str(imm)
 
     def _output_sym(self,sym):
@@ -74,6 +75,8 @@ class Dissasembler:
             self._decode_RRI(opcode)
         elif INS_type == I:
             self._decode_I(opcode)
+        elif INS_type == RI:
+            self._decode_RI(opcode)
         else:
             if immTypes[opcode] in (U8,N):
                 self.Instructions.append(Instruction(2,opcode,mems[opcode],""))
@@ -95,6 +98,15 @@ class Dissasembler:
             if(IMM >= 0x8000):
                 IMM = (IMM & 0x7fff) * -1
         self.Instructions.append(Instruction(4,opcode,mems[opcode],regs,IMM))
+        self.pc += 4
+
+    def _decode_RI(self,opcode):
+        rg = Reg_lookup[self.text[self.pc + 1] >> 4]
+        IMM = (int(self.text[self.pc + 1]) << 16) + (int(self.text[self.pc + 2]) << 8) + (int(self.text[self.pc + 3]))
+        IMM &= 0xfffff
+        if(IMM >= 0x80000):
+            IMM = (IMM & 0x7ffff) * -1
+        self.Instructions.append(Instruction(4,opcode,mems[opcode],rg,IMM))
         self.pc += 4
 
     def _decode_I(self,opcode):
