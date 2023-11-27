@@ -31,7 +31,7 @@ void INPUT_STR(JRISC_ps_t *ps){
 }
 
 void BOOT_LOAD(JRISC_ps_t *ps,FILE *disk){
-	for(int i = 0;i < 1024;i += 1){
+	for(int i = 0;i >= 0;i += 1){
 		if(feof(disk)){
 			break;
 		}
