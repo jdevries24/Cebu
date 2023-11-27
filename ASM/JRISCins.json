@@ -1,0 +1,724 @@
+{
+   "Instructions":[
+         {
+         "MEM":"NOP",
+         "Name":"NO op",
+         "Format":"NOP",
+         "DISC":"Does nothing",
+         "OPCODE":"00",
+         "Im_Type":"N",
+         "F_code":"O"
+      },
+      {
+         "MEM":"LDB",
+         "Name":"Load Byte",
+         "Format":"LDB $DEST,$SRC",
+         "DISC":"Loads a byte(8 bits,1 byte) from the address in SRC register to the dest register",
+         "OPCODE":"10",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"LDH",
+         "Name":"Load Half",
+         "Format":"LDH $DEST,$SRC",
+         "DISC":"Loads a Half(16 bits,2 bytes) from the address in SRC register to the dest register",
+         "OPCODE":"11",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"LDW",
+         "Name":"Load Word",
+         "Format":"LDW $DEST,$SRC",
+         "DISC":"Loads a Word(32 bits,14byte) from the address in SRC register to the dest register",
+         "OPCODE":"12",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"LDBS",
+         "Name":"Load Byte Signed",
+         "Format":"LDB $DEST,$SRC",
+         "DISC":"Loads a byte(8 bits,1 byte) from the address in SRC register to the dest register extends the sign bit from the byte",
+         "OPCODE":"14",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"LDHS",
+         "Name":"Load Half Signed",
+         "Format":"LDB $DEST,$SRC",
+         "DISC":"Loads a Half(16 bits,2 byte) from the address in SRC register to the dest register extends the sign bit from the Half",
+         "OPCODE":"15",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"LDWS",
+         "Name":"Load Word Signed",
+         "Format":"LDB $DEST,$SRC",
+         "DISC":"Loads a Half(32 bits,4 byte) from the address in SRC register to the dest register.",
+         "OPCODE":"16",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"STB",
+         "Name":"Store Byte",
+         "Format":"STB $SRC,$DEST",
+         "DISC":"Stores the first 8 bits of register SRC to the address in register DEST",
+         "OPCODE":"18",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"STH",
+         "Name":"Store Half",
+         "Format":"STH $SRC,$DEST",
+         "DISC":"Stores the first 16 bits of register SRC to the address in register DEST",
+         "OPCODE":"19",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"STW",
+         "Name":"Store Word",
+         "Format":"STB $SRC,$DEST",
+         "DISC":"Stores the first 8 bits of register SRC to the address in register DEST",
+         "OPCODE":"1A",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"LDBI",
+         "Name":"Load Byte Immediate",
+         "Format":"LDB $DEST,$SRC,#Imm",
+         "DISC":"Loads a byte(8 bits,1 byte) from the address in SRC register(offsetted by Imm) to the dest register ",
+         "OPCODE":"20",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"LDHI",
+         "Name":"Load Half Immediate",
+         "Format":"LDH $DEST,$SRC,#Imm",
+         "DISC":"Loads a Half(16 bits,2 bytes) from the address in SRC register(offsetted by Imm) to the dest register",
+         "OPCODE":"21",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"LDWI",
+         "Name":"Load Word Immediate",
+         "Format":"LDW $DEST,$SRC,#Imm",
+         "DISC":"Loads a Word(32 bits,4byte) from the address in SRC register(offsetted by Imm) to the dest register",
+         "OPCODE":"22",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"LDBSI",
+         "Name":"Load Byte Signed Immediate",
+         "Format":"LDB $DEST,$SRC,#Imm",
+         "DISC":"Loads a byte(8 bits,1 byte) from the address in SRC register(offsetted by Imm) to the dest register extends the sign bit from the byte",
+         "OPCODE":"24",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"LDHSI",
+         "Name":"Load Half Signed Immediate",
+         "Format":"LDB $DEST,$SRC,#Imm",
+         "DISC":"Loads a Half(16 bits,2 byte) from the address in SRC register(offsetted by Imm) to the dest register extends the sign bit from the Half",
+         "OPCODE":"25",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"LDWSI",
+         "Name":"Load Word Signed Immediate",
+         "Format":"LDB $DEST,$SRC,#Imm",
+         "DISC":"Loads a Half(32 bits,4 byte) from the address in SRC register(offsetted by Imm) to the dest register",
+         "OPCODE":"26",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"STBI",
+         "Name":"Store Byte Immediate",
+         "Format":"STB $SRC,$DEST,#Imm",
+         "DISC":"Stores the first 8 bits of register SRC to the address in register DEST(offsetted by Imm)",
+         "OPCODE":"28",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"STHI",
+         "Name":"Store Half Immediate",
+         "Format":"STH $SRC,$DEST,#Imm",
+         "DISC":"Stores the first 16 bits of register SRC to the address in register DEST(offsetted by Imm)",
+         "OPCODE":"29",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"STWI",
+         "Name":"Store Word Immediate",
+         "Format":"STB $SRC,$DEST,#Imm",
+         "DISC":"Stores the first 8 bits of register SRC to the address in register DEST(offsetted by Imm)",
+         "OPCODE":"2A",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"ADD",
+         "NAME":"Add",
+         "Format":"ADD $DEST,$SRC",
+         "DISC":"Adds the value in SRC to the value in DEST then stores in DEST",
+         "OPCODE":"30",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"SUB",
+         "NAME":"Subtract",
+         "Format":"SUB $DEST,$SRC",
+         "DISC":"Subtracts the value in SRC from the value in DEST then stores in DEST",
+         "OPCODE":"31",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"AND",
+         "NAME":"And",
+         "Format":"AND $DEST,$SRC",
+         "DISC":"bytewise And the values in SRC and DEST then stores in DEST",
+         "OPCODE":"32",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"ORR",
+         "NAME":"Or",
+         "Format":"ORR $DEST,$SRC",
+         "DISC":"bytewise or the values in SRC and DEST then stores in DEST",
+         "OPCODE":"33",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"XOR",
+         "NAME":"exclusive or",
+         "Format":"XOR $DEST,$SRC",
+         "DISC":"bytewise exclusive ors the values in SRC and DEST then stores in DEST",
+         "OPCODE":"34",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"NOT",
+         "NAME":"not",
+         "Format":"NOT $DEST,$SRC",
+         "DISC":"bytewise NOTS the value in SRC then stores to DEST",
+         "OPCODE":"35",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"NEG",
+         "NAME":"Negate",
+         "Format":"NEG $DEST,$SRC",
+         "DISC":"two complement negate the value in SRC then store in dest",
+         "OPCODE":"36",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"LSL",
+         "NAME":"Logical shift left",
+         "Format":"LSL $DEST,$SRC",
+         "DISC":"Shifts the value in DEST left by the value in $SRC then stores to DEST",
+         "OPCODE":"37",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"LSR",
+         "NAME":"Logical shift right",
+         "Format":"LSL $DEST,$SRC",
+         "DISC":"Shifts the value in DEST right by the value in $SRC then stores to DEST",
+         "OPCODE":"38",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"MUL",
+         "NAME":"Multiply",
+         "Format":"MUL $DEST,$SRC",
+         "DISC":"Multiplyes the values in DEST and SRC then stores to DEST",
+         "OPCODE":"39",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"SMUL",
+         "NAME":"Signed Multiply",
+         "Format":"SMUL $DEST,$SRC",
+         "DISC":"Multiplies in twos complement the values in SRC and DEST then stores in DEST",
+         "OPCODE":"3A",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"MOD",
+         "NAME":"Mod",
+         "Format":"MOD $DEST,$SRC",
+         "DISC":"Finds the remainder of dividing the value in DEST by the value in SRC. then stores the remainder in SRC",
+         "OPCODE":"3B",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"SMOD",
+         "NAME":"Signed MOD",
+         "Format":"SMOD $DEST,$SRC",
+         "DISC":"Finds the remainder of dividing the value in DEST by the value in SRC(Using twos complement) then stores the remainder in SRC",
+         "OPCODE":"3C",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"DIV",
+         "NAME":"Divide",
+         "Format":"DIV $DEST,$SRC",
+         "DISC":"Divides the value in DEST by the value in SRC then stores in DEST",
+         "OPCODE":"3D",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"SDIV",
+         "NAME":"Sigened Divide",
+         "Format":"DIV $DEST,$SRC",
+         "DISC":"Divides the value in DEST by the value in SRC(using twos complement) then stores in DEST",
+         "OPCODE":"3E",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"MOV",
+         "NAME":"Move",
+         "Format":"MOV $DEST,$SRC",
+         "DISC":"Copys the value in SRC to DEST",
+         "OPCODE":"3F",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"ADDI",
+         "NAME":"Add immediate",
+         "Format":"ADDI $DEST,$SRC,#IMM",
+         "DISC":"Add IMM to the value in SRC then stores in DEST",
+         "OPCODE":"40",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"SUBI",
+         "NAME":"Subtract immediate",
+         "Format":"SUBI $DEST,SRC,#IMM",
+         "DISC":"Subtract IMM from SRC then store in DEST",
+         "OPCODE":"41",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"ANDI",
+         "NAME":"AND Immediate",
+         "Format":"ANDI $DEST,SRC,#IMM",
+         "DISC":"Bytewise and the value in SRC and IMM then store in DEST",
+         "OPCODE":"42",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"ORRI",
+         "NAME":"OR Immediate",
+         "Format":"ORRI $DEST,SRC,#IMM",
+         "DISC":"Bytewise or the value in SRC and IMM then store in DEST",
+         "OPCODE":"43",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"XORI",
+         "NAME":"XOR Immediate",
+         "Format":"ORRI $DEST,SRC,#IMM",
+         "DISC":"Bytewise exclusive or the value in SRC and IMM then store in DEST",
+         "OPCODE":"44",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"ASLI",
+         "NAME":"Arithmitic shift left immediate",
+         "Format":"ASLI $DEST,$SRC,#IMM",
+         "DISC":"Arithmitic shift left the value in SRC by immediate then store in DEST",
+         "OPCODE":"45",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"ASRI",
+         "NAME":"Arithmitic shift right immediate",
+         "Format":"ASRI $DEST,$SRC,#IMM",
+         "DISC":"Arithmitic shift right the value in SRC by immediate then store in DEST",
+         "OPCODE":"46",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"LSLI",
+         "NAME":"Logical shift left immediate",
+         "Format":"LSLI $DEST,$SRC,#IMM",
+         "DISC":"logic shift left the value in SRC by immediate then store in DEST",
+         "OPCODE":"47",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"LSRI",
+         "NAME":"Logical shift right immediate",
+         "Format":"LSRI $DEST,$SRC,#IMM",
+         "DISC":"logit shift right the value in SRC by immediate then store in DEST",
+         "OPCODE":"48",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"MULI",
+         "NAME":"Multiply immediate",
+         "Format":"MULI $DEST,$SRC,#IMM",
+         "DISC":"Multiply the value in SRC by IMM then store in DEST",
+         "OPCODE":"49",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"SMULI",
+         "NAME":"Signed Multiply immediate",
+         "Format":"MULI $DEST,$SRC,#IMM",
+         "DISC":"Multiply the value in SRC(in twos complement) by IMM then store in DEST",
+         "OPCODE":"4A",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"MODI",
+         "NAME":"Module Immediate",
+         "Format":"MODI $DEST,$SRC,#IMM",
+         "DISC":"Take the remander of the value in SRC divided by IMM then store in DEST",
+         "OPCODE":"4B",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"SMODI",
+         "NAME":"Signed Module Immediate",
+         "Format":"SMODI $DEST,$SRC,#IMM",
+         "DISC":"Take the remander of the value in SRC(in twos complement) divided by IMM then store in DEST",
+         "OPCODE":"4C",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"DIVI",
+         "NAME":"Divide Immediate",
+         "Format":"DIVI $DEST,$SRC,#IMM",
+         "DISC":"Take the value in SRC divided by IMM then store in DEST",
+         "OPCODE":"4D",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"SDIVI",
+         "NAME":"Signed Divide Immediate",
+         "Format":"SMODI $DEST,$SRC,#IMM",
+         "DISC":"Take the value in SRC(in twos complement) divided by IMM then store in DEST",
+         "OPCODE":"4E",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"JMP",
+         "NAME":"Jump",
+         "Format":"JMP #OFFSET",
+         "DISC":"jumps the program by the offset",
+         "OPCODE":"50",
+         "Im_Type":"S24",
+         "F_code":"I"
+      },
+      {
+         "MEM":"JEQ",
+         "NAME":"Jump If equal",
+         "Format":"JME $S1,$S2,#OFFSET",
+         "DISC":"jumps the program by the offset IF the values in S1 and S2 are equal",
+         "OPCODE":"51",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"JNE",
+         "NAME":"Jump If not equal",
+         "Format":"JNE $S1,$S2,#OFFSET",
+         "DISC":"jumps the program by the offset IF the values in S1 and S2 are not equal",
+         "OPCODE":"52",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"JLT",
+         "NAME":"Jump If less than",
+         "Format":"JLT $S1,$S2,#OFFSET",
+         "DISC":"jumps the program by the offset IF the values in S1 is less than the value in S2",
+         "OPCODE":"53",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"JGT",
+         "NAME":"Jump If greater then",
+         "Format":"JGT $S1,$S2,#OFFSET",
+         "DISC":"jumps the program by the ofset IF the values in S1 is larger then the value in S2",
+         "OPCODE":"54",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"JLE",
+         "NAME":"Jump If less then eq",
+         "Format":"JLE $S1,$S2,#OFFSET",
+         "DISC":"jumps the program by the ofset IF the values in S1 is less then or equal to the value in S2",
+         "OPCODE":"55",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"JGE",
+         "NAME":"Jump If grater then eq",
+         "Format":"JGE $S1,$S2,#OFFSET",
+         "DISC":"jumps the program by the ofset IF the values in S1 is greater then or equal to the value in S2",
+         "OPCODE":"56",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"JSEQ",
+         "NAME":"Jump If signed equal",
+         "Format":"JSEQ $S1,$S2,#OFFSET",
+         "DISC":"jumps the program by the offset IF the values in S1 and S2 are equal",
+         "OPCODE":"61",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"JSNE",
+         "NAME":"Jump If Signed not equal",
+         "Format":"JSNE $S1,$S2,#OFFSET",
+         "DISC":"jumps the program by the offset IF the values in S1 and S2 are not equal",
+         "OPCODE":"62",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"JSLT",
+         "NAME":"Jump If signed less than",
+         "Format":"JSLT $S1,$S2,#OFFSET",
+         "DISC":"jumps the program by the offset IF the values in S1 is less than the value in S2 in twos complemnt",
+         "OPCODE":"63",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"JSGT",
+         "NAME":"Jump If signed greater then",
+         "Format":"JSGT $S1,$S2,#OFFSET",
+         "DISC":"jumps the program by the ofset IF the values in S1 is larger then the value in S2 in twos complement",
+         "OPCODE":"64",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"JSLE",
+         "NAME":"Jump If less then eq",
+         "Format":"JSLE $S1,$S2,#OFFSET",
+         "DISC":"jumps the program by the ofset IF the values in S1 is less then or equal to the value in S2",
+         "OPCODE":"65",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"JSGE",
+         "NAME":"Jump If signed greater then eq",
+         "Format":"JSGE $S1,$S2,#OFFSET",
+         "DISC":"jumps the program by the ofset IF the values in S1 is greater then or equal to the value in S2",
+         "OPCODE":"66",
+         "Im_Type":"S16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"LEA",
+         "NAME":"Load Effective Address",
+         "Format":"LEA $DEST,#OFFSET",
+         "DISC":"Add the Offset to the PC then stores that value into register DEST",
+         "OPCODE":"71",
+         "Im_Type":"S20",
+         "F_code":"RI"
+      },
+      {
+         "MEM":"MOVU",
+         "NAME":"Move Upper",
+         "Format":"MOVU $DEST,#Imm",
+         "DISC":"Shifts the Imm left by 16 bits then stores to DEST",
+         "OPCODE":"72",
+         "Im_Type":"U16",
+         "F_code":"RRI"
+      },
+      {
+         "MEM":"ADDPC",
+         "NAME":"Add PC",
+         "Format":"ADDPC $DEST,$SRC",
+         "DISC":"adds the value SRC to the current PC then stores in DEST",
+         "OPCODE":"73",
+         "Im_Type":"N",
+         "F_code":"RR"
+      },
+      {
+         "MEM":"CAL",
+         "NAME":"Call",
+         "Format":"CALL #Offset",
+         "DISC":"Stores the address to the next insturction to Register RA. then adds the offset to the PC",
+         "OPCODE":"A0",
+         "Im_Type":"S24",
+         "F_code":"I"
+      },
+      {
+         "MEM":"CAR",
+         "NAME":"Call Register",
+         "Format":"CAR $SRC",
+         "DISC":"Stores the address to the next instruction into the register RA. then sets the PC to the value in SRC",
+         "OPCODE":"A1",
+         "Im_Type":"N",
+         "F_code":"R"
+      },
+      {
+         "MEM":"RET",
+         "NAME":"Return",
+         "Format":"RET",
+         "DISC":"Sets the PC to the value in regester RA",
+         "OPCODE":"B0",
+         "Im_Type":"N",
+         "F_code":"O"
+      },
+      {
+         "MEM":"INT",
+         "Name":"Inturupt",
+         "Format":"INT #Number",
+         "DISC":"generates an inturupt of number",
+         "OPCODE":"C0",
+         "Im_Type":"U8",
+         "F_code":"IN"
+      },
+      {
+         "MEM":"RINT",
+         "Name":"Return From Inturupt",
+         "Format":"RINT",
+         "DISC":"Come back to this one",
+         "OPCODE":"C1",
+         "Im_Type":"N",
+         "F_code":"O"
+      },
+      {
+         "MEM":"POPIRA",
+         "Name":"Pop inturupt return address",
+         "Format":"POP $DEST",
+         "DISC":"Come back to this one",
+         "OPCODE":"C2",
+         "Im_Type":"N",
+         "F_code":"R"
+      },
+      {
+         "MEM":"PSHIRA",
+         "Name":"Push inturupt return address",
+         "Format":"PSHIRA $SRC",
+         "DISC":"Come back to this one",
+         "OPCODE":"C3",
+         "Im_Type":"N",
+         "F_code":"R"
+      },
+      {
+         "MEM":"CSR",
+         "Name":"Call Service Routine",
+         "Format":"CSR #SeviceRoutine",
+         "DISC":"Come back to this one",
+         "OPCODE":"F0",
+         "Im_Type":"U24",
+         "F_code":"I"
+      }
+   ],
+   "REGISTERS": {
+      "SP": 14,
+      "RA": 15,
+      "ZERO": 0,
+      "0": 0,
+      "R0": 0,
+      "1": 1,
+      "R1": 1,
+      "2": 2,
+      "R2": 2,
+      "3": 3,
+      "R3": 3,
+      "4": 4,
+      "R4": 4,
+      "5": 5,
+      "R5": 5,
+      "6": 6,
+      "R6": 6,
+      "7": 7,
+      "R7": 7,
+      "8": 8,
+      "R8": 8,
+      "9": 9,
+      "R9": 9,
+      "10": 10,
+      "R10": 10,
+      "A": 10,
+      "11": 11,
+      "R11": 11,
+      "RB": 11,
+      "B": 11,
+      "12": 12,
+      "R12": 12,
+      "RC": 12,
+      "C": 12,
+      "13": 13,
+      "R13": 13,
+      "RD": 13,
+      "D": 13,
+      "14": 14,
+      "R14": 14,
+      "RE": 14,
+      "E": 14,
+      "15": 15,
+      "R15": 15,
+      "RF": 15,
+      "F": 15
+  },
+  "MEMORY_SIZES": {
+      "BYTE": 1,
+      "HALF": 2,
+      "WORD": 4
+  }
+}
+
