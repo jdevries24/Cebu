@@ -420,6 +420,28 @@ void JGT(JRISC_ps_t *ps){
 	}
 }
 
+void JLE(JRISC_ps_t *ps){
+	LoadSrcDest()
+	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
+	if(Dest_val <= Src_val){
+		ps->Pc = Add_signed_16(ps->Pc,imm);
+	}
+	else{
+		ps->Pc += 4;
+	}
+}
+
+void JGE(JRISC_ps_t *ps){
+	LoadSrcDest()
+	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
+	if(Dest_val >= Src_val){
+		ps->Pc = Add_signed_16(ps->Pc,imm);
+	}
+	else{
+		ps->Pc += 4;
+	}
+}
+
 void JSEQ(JRISC_ps_t *ps){
 	JEQ(ps);
 }
@@ -450,10 +472,32 @@ void JSGT(JRISC_ps_t *ps){
 	}
 }
 
+void JSLE(JRISC_ps_t *ps){
+	LoadSrcDest()
+	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
+	if(((int32_t)Dest_val)  <= ((int32_t)Src_val)){
+		ps->Pc = Add_signed_16(ps->Pc,imm);
+	}
+	else{
+		ps->Pc += 4;
+	}
+}
+
+void JSGE(JRISC_ps_t *ps){
+	LoadSrcDest()
+	uint32_t imm = Load_half(ps->Pc + 2,ps->Ram);
+	if(((int32_t)Dest_val)  >= ((int32_t)Src_val)){
+		ps->Pc = Add_signed_16(ps->Pc,imm);
+	}
+	else{
+		ps->Pc += 4;
+	}
+}
+
 void LEA(JRISC_ps_t *ps){
 	LoadSrcDest()
 	uint32_t imm = Load_word(ps->Pc,ps->Ram) & 0xffff;
-	ps->Registers[Src_num] = Add_signed_16(ps->Pc,imm);
+	ps->Registers[Dest_num] = Add_signed_16(ps->Pc,imm);
 	ps->Pc += 4;
 }
 
@@ -600,8 +644,8 @@ void (*JRISC_instructions[256])(JRISC_ps_t*) = {
 	JNE,
 	JLT,
 	JGT,
-	INVALID,
-	INVALID,
+	JLE,
+	JGE,
 	INVALID,
 	INVALID,
 	INVALID,
@@ -616,8 +660,8 @@ void (*JRISC_instructions[256])(JRISC_ps_t*) = {
 	JSNE,
 	JSLT,
 	JSGT,
-	INVALID,
-	INVALID,
+	JSLE,
+	JSGE,
 	INVALID,
 	INVALID,
 	INVALID,
