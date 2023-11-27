@@ -22,17 +22,14 @@ void Run(JRISC_ps_t *ps){
 			printf("Opcode %x\n",ps->Ram[ps->Pc]);
 			break;
 		}
+		else if(ps->Inturupt == 10){
+			printf("Debug Ping\n");
+			ps->Inturupt = 0;
+			fflush(stdout);
+		}
 	}
 }
 
-void bootload(JRISC_ps_t *ps){
-	for(int i = 0;i < 1024;i += 1){
-		if(feof(disk)){
-			break;
-		}
-		ps->Ram[i] = (uint8_t) getc(disk);
-	}
-}
 
 JRISC_ps_t *init_ps(){
 	JRISC_ps_t *ps = calloc(1,sizeof(JRISC_ps_t));
